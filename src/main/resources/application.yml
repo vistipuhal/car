@@ -1,0 +1,28 @@
+### Spring properties
+# Service registers under this name
+spring:
+  application:
+    name: tms-calculator-service
+
+# Discovery Server Access
+#eureka:
+#    client:
+#      fetchRegistry: true
+#      registryFetchIntervalSeconds: 5
+#      serviceUrl:
+#        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#        #defaultZone: ${EUREKA_URI:http://tncvm.centralindia.cloudapp.azure.com:8761/eureka}
+#    instance:
+#      hostname: localhost
+#      #hostname: tncvm.centralindia.cloudapp.azure.com
+#      preferIpAddress: false           
+
+# HTTP Server (Tomcat) Port
+server: 
+  port: 9180
+
+# Disable Spring Boot's "Whitelabel" default error page, so we can use our own
+error:
+  whitelabel:
+    enabled: false
+    
