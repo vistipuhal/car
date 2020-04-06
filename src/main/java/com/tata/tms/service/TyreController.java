@@ -1,14 +1,14 @@
 package com.tata.tms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tata.tms.dto.BusData;
-import com.tata.tms.dto.TyreData;
+import com.tata.tms.dto.CarData;
 
 @RestController
 @RequestMapping("tms")
@@ -16,48 +16,48 @@ public class TyreController {
 
 	@Autowired
 	TyreService tyreService;
-	
-	@RequestMapping(value = "/addTyre", method = RequestMethod.POST)
-	public String addTyre(@RequestBody TyreData tyre) /*throws exception*/{
-		tyreService.addTyre(tyre);
-		return "msg here";
-	}
 
-	@RequestMapping(value = "/findTyre/{tyreNum}", method = RequestMethod.GET)
-	public TyreData findTyre(@PathVariable("tyreNum") String num) /*throws exception*/{
-		System.out.println("service API invoked");
-		return tyreService.findTyre(num);
-	}
-	
-	@RequestMapping(value = "/updateTyre", method = RequestMethod.POST)
-	public String updateTyre(@RequestBody TyreData tyre) /*throws exception*/{
-		tyreService.updateTyre(tyre);
-		return "msg here";
-	}
-
-	@RequestMapping(value = "/addBus", method = RequestMethod.POST)
-	public String addBus(@RequestBody BusData bus) /*throws exception*/{		
-		tyreService.addBus(bus);
-		return "msg bus";
-	}
-	
-	@RequestMapping(value = "/findBus/{busNum}", method = RequestMethod.GET)
-	public BusData findBus(@PathVariable("busNum") String num) /*throws exception*/{
+	@RequestMapping(value = "/findCarByName/{name}", method = RequestMethod.GET)
+	public List<CarData> findCarByName(@PathVariable("name") String num) throws Exception{
 		
-		return tyreService.findBus(num);
+		return tyreService.findCarByName(num);
+	}
+	@RequestMapping(value = "/findCarByManufactName/{manufactName}", method = RequestMethod.GET)
+	public List<CarData> findCarByManufactName(@PathVariable("manufactName") String num) throws Exception{
+		
+		return tyreService.findCarByManufactName(num);
+	}
+	@RequestMapping(value = "/findCarByModel/{model}", method = RequestMethod.GET)
+	public List<CarData> findCarByModel(@PathVariable("model") String num) throws Exception{
+		
+		return tyreService.findCarByModel(num);
+	}
+	@RequestMapping(value = "/findCarByYear/{year}", method = RequestMethod.GET)
+	public List<CarData> findCarByYear(@PathVariable("year") String num) throws Exception{
+		
+		return tyreService.findCarByYear(num);
+	}
+	@RequestMapping(value = "/findCarByColor/{color}", method = RequestMethod.GET)
+	public List<CarData> findCarByColor(@PathVariable("color") String num)throws Exception{
+		
+		return tyreService.findCarByColor(num);
 	}
 
-	
-	@RequestMapping(value = "/deleteTyre/{tyreNum}", method = RequestMethod.GET)
-	public String updateTyre(@PathVariable("tyreNum") String num) /*throws exception*/{
-		tyreService.deleteTyre(num);
-		return "delete tyre";
-	}
-	
-	@RequestMapping(value = "/deleteBus/{busNum}", method = RequestMethod.GET)
-	public String updateBus(@PathVariable("busNum") String num) /*throws exception*/{
-		tyreService.deleteBus(num);
-		return "deletebus";
+	@RequestMapping(value = "/addCar", method = RequestMethod.GET)
+	public String addCar(CarData car) throws Exception{
+		return tyreService.addCar(car);
 	}
 
+	@RequestMapping(value = "/addCar", method = RequestMethod.GET)
+	public String updateCar(CarData car) throws Exception{
+		return tyreService.updateCar(car);
+	}
+	
+	@RequestMapping(value = "/deleteCar/{carNum}", method = RequestMethod.GET)
+	public String deleteCar(@PathVariable("carNum") String num) throws Exception{
+		return tyreService.deleteCar(num);
+	}
+	
+
+	
 }

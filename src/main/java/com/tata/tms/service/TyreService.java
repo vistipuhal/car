@@ -1,25 +1,27 @@
 package com.tata.tms.service;
 
-import com.tata.tms.dto.BusData;
-import com.tata.tms.dto.TyreData;
+import java.util.List;
+
+import com.tata.tms.dto.CarData;
 
 public interface TyreService {
 
-	public String addTyre(TyreData tyre);
+	public String addCar(CarData car) throws Exception;
 	
-	public String addBus(BusData bus);
+	public String updateCar(CarData car) throws Exception;
+
+	public String deleteCar(String carNum) throws Exception;
+
+	public List<CarData> findCarByName(String carName) throws Exception;
 	
-	public String updateTyre(TyreData tyre);
-
-	public String updateBus(BusData bus);
-
-	public TyreData findTyre(String tyreNum);
-
-	public BusData findBus(String busNum);
-
-	public String deleteBus(String busNum);
-
-	public String deleteTyre(String tyreNum);
+	public List<CarData> findCarByManufactName(String manufactName) throws Exception;
+	
+	public List<CarData> findCarByModel(String model) throws Exception;
+	
+	public List<CarData> findCarByYear(String year) throws Exception;
+	
+	public List<CarData> findCarByColor(String color) throws Exception;
 
 
+	
 }
